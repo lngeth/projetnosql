@@ -6,6 +6,7 @@ services:
       context: ./projetnosql
     ports:
       - "8000:8000"
+    command: ["sh", "./start.sh"]
     depends_on:
       - postgres
       - mongodb

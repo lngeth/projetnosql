@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'projetnosql.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mydb', 
         'USER': 'myuser',
         'PASSWORD': 'mypassword',
-        'HOST': 'projetnosql_postgres_1', 
+        'HOST': 'postgres', 
         'PORT': '5432',
     },
     'mongodb': {
@@ -96,8 +96,6 @@ DATABASES = {
         }
     }
 }
-
-DATABASE_ROUTERS = ['projetnosql.routers.MongoRouter']
 
 
 # Password validation
