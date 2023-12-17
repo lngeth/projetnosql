@@ -5,10 +5,19 @@
 </head>
 <body>
 
-<h2>Liste des chiens dans la BDD</h2>
-{% if data %}
-{{ data }}
-{% endif %}
+<h2>Liste des Chiens DB PSQL</h2>
+<ul>
+    {% for dog in dogsPSQL %}
+        <li><img src="{{ dog.url }}" /></li>
+    {% endfor %}
+</ul>
+
+<h2>Liste des Chiens DB mongo</h2>
+<ul>
+    {% for dog in dogsMongo %}
+        <li><img src="{{ dog.url }}" /></li>
+    {% endfor %}
+</ul>
 
 </body>
 </html>

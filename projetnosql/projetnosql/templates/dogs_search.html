@@ -2,15 +2,43 @@
 <html>
 <head>
     <title>Rechercher les chiens</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        img {
+            width: 128px;
+            height: 62px;
+            border-radius: 10px;
+            border: solid 1px black;
+        }
+    </style>
 </head>
 <body>
 
 <h2>Rechercher</h2>
 <form method="post" action="{% url 'dogs_search' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Ajouter</button>
+    <select id="id_breeds" name="breed_id">
+        {% for v in breeds %}
+            <option value="{{ v.id }}">{{ v.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Rechercher</button>
 </form>
+
+{% if dogs_list %}
+<h2>Liste des chiens</h2>
+    {% for v in dogs_list %}
+        <img src="{{ v.url }}" />
+        <a href="{% url 'add_dog' %}?url={{ v.url }}">Enregistrer</a>
+        <br>
+    {% endfor %}
+{% endif %}
 
 </body>
 </html>
