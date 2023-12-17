@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Livres</title>
+</head>
+<body>
+
+<h2>Liste des Livres DB PSQL</h2>
+<ul>
+    {% for book in booksPSQL %}
+        <li>{{ book.title }} - {{ book.author }} - {{ book.content }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Liste des Livres DB mongo</h2>
+<ul>
+    {% for book in booksMongo %}
+        <li>{{ book.title }} - {{ book.author }} - {{ book.content }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
