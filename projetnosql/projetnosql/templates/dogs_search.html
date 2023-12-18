@@ -15,11 +15,14 @@
 </form>
 
 {% if dogs_list %}
-<h2>Liste des chiens</h2>
+<h2>Liste des chiens {% if breed_name_selected %} de race "{{ breed_name_selected }}" {% endif %}</h2>
+<div id="dogs_list">
     {% for v in dogs_list %}
+    <div id="dog_result">
         <img src="{{ v.url }}" />
-        <a href="{% url 'add_dog' %}?url={{ v.url }}">Enregistrer</a>
-        <br>
+        <a class="save_button" href="{% url 'add_dog' %}?url={{ v.url }}">Enregistrer</a>
+    </div>
     {% endfor %}
+</div>
 {% endif %}
 {% endblock %}

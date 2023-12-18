@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index, dogs_search, add_dog, dogs_list
+from .views import index, dogs_search, add_dog, dogs_list, remove_dog_psql, remove_dog_mongo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='/'),
     path('dogs/search', dogs_search, name='dogs_search'),
     path('add_dog', add_dog, name='add_dog'),
+    path('remove_dog_psql', remove_dog_psql, name='remove_dog_psql'),
+    path('remove_dog_mongo', remove_dog_mongo, name='remove_dog_mongo'),
     path('dogs_list/', dogs_list, name='dogs_list'),
 ]

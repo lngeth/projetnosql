@@ -4,16 +4,22 @@
 
 {% block content %}
 <h2>Liste des Chiens DB PSQL</h2>
-<ul>
+<div id="dogs_list">
     {% for dog in dogsPSQL %}
-        <li><img src="{{ dog.url }}" /></li>
+    <div id="dog_result">
+        <img src="{{ dog.url }}" />
+        <a class="remove_button" href="{% url 'remove_dog_psql' %}?url={{ dog.url }}">Supprimer</a>
+    </div>
     {% endfor %}
-</ul>
+</div>
 
 <h2>Liste des Chiens DB mongo</h2>
-<ul>
+<div id="dogs_list">
     {% for dog in dogsMongo %}
-        <li><img src="{{ dog.url }}" /></li>
+    <div id="dog_result">
+        <img src="{{ dog.url }}" />
+        <a class="remove_button" href="{% url 'remove_dog_mongo' %}?url={{ dog.url }}">Supprimer</a>
+    </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

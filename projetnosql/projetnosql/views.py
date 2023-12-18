@@ -17,10 +17,15 @@ def dogs_search(request):
     
     if request.method == 'POST':
         breed_id = request.POST.get('breed_id')
+        breed_name = ""
+        for d in breeds:
+            if (d['id'] == str(breed_id)):
+                breed_name = d['name']
+                print(breed_name)
         response = requests.get('https://api.thedogapi.com/v1/images/search?limit=10&breeds_ids=' + str(breed_id) + '&api_key=' + os.getenv('DOGAPI_KEY'))
         if response.status_code == 200:
             dogs_list = response.json()
-            return render(request, 'dogs_search.html', {'breeds': breeds, 'dogs_list': dogs_list})
+            return render(request, 'dogs_search.html', {'breeds': breeds, 'dogs_list': dogs_list, 'breed_name_selected': breed_name})
         return redirect('dogs_search')
     
     return render(request, 'dogs_search.html', {'breeds': breeds})
@@ -39,3 +44,11 @@ def dogs_list(request):
     dogsPSQL = Dog.objects.using('default')
     dogsMongo = Dog.objects.using('mongodb')
     return render(request, 'dogs_list.html', {'dogsPSQL': dogsPSQL, 'dogsMongo': dogsMongo})
+
+def remove_dog_psql(request):
+    Dog.objects.using('default').filter(url=str(request.GET.get('url'))).delete()
+    return redirect('dogs_list')
+
+def remove_dog_mongo(request):
+    Dog.objects.using('mongodb').filter(url=str(request.GET.get('url'))).delete()
+    return redirect('dogs_list')
