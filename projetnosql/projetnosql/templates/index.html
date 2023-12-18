@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+<h1>Projet NoSQL</h1>
+<div>
+  <p>
+    Le but de ce projet est de récupérer des images de chiens via une API appelé "DogAPI".<br>
+    Vous pourrez enregistrer l'image que vous préférez dans la base de données.
+  </p>
+</div>
+<div>
+  <div><a id="button_nav" href="{% url 'dogs_search' %}">Essayer l'API</a></div>
+</div>
+{% endblock %}

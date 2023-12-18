@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Liste des chiens</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block title %}Liste chiens{% endblock %}
+
+{% block content %}
 <h2>Liste des Chiens DB PSQL</h2>
 <ul>
     {% for dog in dogsPSQL %}
@@ -18,6 +16,4 @@
         <li><img src="{{ dog.url }}" /></li>
     {% endfor %}
 </ul>
-
-</body>
-</html>
+{% endblock %}

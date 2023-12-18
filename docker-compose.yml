@@ -6,12 +6,14 @@ services:
       context: ./projetnosql
     ports:
       - "8000:8000"
+    volumes:
+      - ./projetnosql:/app/
     command: ["sh", "./start.sh"]
     depends_on:
       postgres:
         condition: service_healthy
       mongodb:
-        condition: service_healthy
+        condition: service_started
     
 
   postgres:
@@ -24,7 +26,7 @@ services:
       - ./postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U myuser -d mydb"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
 
@@ -35,16 +37,3 @@ services:
     container_name: mongodb
     volumes:
       - ./mongodb_data:/data/db
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "mongo",
-          "--quiet",
-          "127.0.0.1",
-          "--eval",
-          "'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'",
-        ]
-      interval: 5s
-      timeout: 5s
-      retries: 5

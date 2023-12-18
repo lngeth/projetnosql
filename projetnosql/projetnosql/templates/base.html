@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}My amazing site{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div id="navbar">
+      <nav>
+        <ul>
+          <li>
+            <a href="{% url '/' %}">
+              <img src="{% static 'assets/accueil_icon.png' %}" alt="Icone accueil">
+              <span>Accueil</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'dogs_search' %}">
+              <img src="{% static 'assets/api_icon.png' %}" alt="Icone API">
+              <span>Accéder à l'API</span>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'dogs_list' %}">
+              <img src="{% static 'assets/bdd_icon.png' %}" alt="Icone BDD">
+              <span>Voir la BDD</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="content">
+      <div id="container_content">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+</body>
+</html>

@@ -1,26 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Rechercher les chiens</title>
-    <style>
-        main {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-        
-        img {
-            width: 128px;
-            height: 62px;
-            border-radius: 10px;
-            border: solid 1px black;
-        }
-    </style>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h2>Rechercher</h2>
+{% block title %}DogAPI{% endblock %}
+
+{% block content %}
+<h1>DogAPI</h1>
 <form method="post" action="{% url 'dogs_search' %}">
     {% csrf_token %}
     <select id="id_breeds" name="breed_id">
@@ -39,6 +22,4 @@
         <br>
     {% endfor %}
 {% endif %}
-
-</body>
-</html>
+{% endblock %}
