@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'projetnosql.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mydb', 
         'USER': 'myuser',
         'PASSWORD': 'mypassword',
