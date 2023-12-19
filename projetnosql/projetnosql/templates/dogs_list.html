@@ -3,23 +3,26 @@
 {% block title %}Liste chiens{% endblock %}
 
 {% block content %}
-<h2>Liste des Chiens DB PSQL</h2>
-<div id="dogs_list">
-    {% for dog in dogsPSQL %}
-    <div id="dog_result">
-        <img src="{{ dog.url }}" />
-        <a class="remove_button" href="{% url 'remove_dog_psql' %}?url={{ dog.url }}">Supprimer</a>
+<div id="container_bdd">
+    <h2 style="text-align: center; grid-row: 1; grid-column: 1;">Liste des Chiens DB PSQL</h2>
+    <div style="grid-row: 2; grid-column: 1;" id="dogs_list">
+        {% for dog in dogsPSQL %}
+        <div id="dog_result">
+            <img src="{{ dog.url }}" />
+            <a class="remove_button" href="{% url 'remove_dog_psql' %}?url={{ dog.url }}">Supprimer</a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+
+    <h2 style="text-align: center; grid-row: 1; grid-column: 2;">Liste des Chiens DB mongo</h2>
+    <div style="grid-row: 2; grid-column: 2;" id="dogs_list">
+        {% for dog in dogsMongo %}
+        <div id="dog_result">
+            <img src="{{ dog.url }}" />
+            <a class="remove_button" href="{% url 'remove_dog_mongo' %}?url={{ dog.url }}">Supprimer</a>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
-<h2>Liste des Chiens DB mongo</h2>
-<div id="dogs_list">
-    {% for dog in dogsMongo %}
-    <div id="dog_result">
-        <img src="{{ dog.url }}" />
-        <a class="remove_button" href="{% url 'remove_dog_mongo' %}?url={{ dog.url }}">Supprimer</a>
-    </div>
-    {% endfor %}
-</div>
 {% endblock %}
